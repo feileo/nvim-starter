@@ -14,4 +14,14 @@ M.base46 = {
 	-- },
 }
 
+M.ui = {
+	cmp = {
+		style="atom_colored",
+		format_colors = {
+			tailwind = true, -- will work for css lsp too
+			icon = "󱓻",
+		  }
+	}
+}
+
 return M
