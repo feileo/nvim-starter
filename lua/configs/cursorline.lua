@@ -1,12 +1,12 @@
 local config = {
   cursorline = {
-    enable = false
+    enable = false,
   },
   cursorword = {
     enable = true,
     min_length = 3,
     hl = { underline = true },
-  }
+  },
 }
 
 return config
