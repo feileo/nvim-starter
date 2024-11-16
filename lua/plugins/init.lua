@@ -1,11 +1,33 @@
 return {
+  "nvim-lua/plenary.nvim",
+
   {
     "nvchad/base46",
     build = function()
       require("base46").load_all_highlights()
     end,
+    event = "VimEnter",
+  },
+
+  {
+    "nvchad/ui",
     lazy = false,
-    event = "VimEnter"
+    config = function()
+      require "nvchad"
+    end,
+    event = "VimEnter",
+  },
+
+  "nvzone/volt",
+  "nvzone/menu",
+  { "nvzone/minty", cmd = { "Huefy", "Shades" } },
+
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      dofile(vim.g.base46_cache .. "devicons")
+      return { override = require "nvchad.icons.devicons" }
+    end,
   },
 
   {
@@ -138,6 +160,7 @@ return {
 
   {
     "voldikss/vim-translator",
+    event = "VimEnter",
     cmd = { "TranslateW", "TranslateWV" },
   },
 
@@ -154,15 +177,15 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
-    }
-  },
-
-  {
-    "VonHeikemen/fine-cmdline.nvim",
-    -- event = "VimEnter",
-    keys = { "'", "\"" },
-    dependencies = {
-      { "MunifTanjim/nui.nvim" },
     },
   },
+
+  -- {
+  --   "VonHeikemen/fine-cmdline.nvim",
+  --   -- event = "VimEnter",
+  --   keys = { "'", "\"" },
+  --   dependencies = {
+  --     { "MunifTanjim/nui.nvim" },
+  --   },
+  -- },
 }

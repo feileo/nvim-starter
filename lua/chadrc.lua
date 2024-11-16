@@ -8,14 +8,12 @@ local highlight = require "highlights"
 local M = {
   base46 = {
     theme = "onedark",
-
-    -- hl_override = {
-    --   Search = { fg = "#353b45", bg = "#83B463", italic = true },
-    --   Comment = { italic = true },
-    --   ["@comment"] = { italic = true },
-    -- },
     hl_override = highlight.override,
     hl_add = highlight.add,
+    -- hl_override = {
+    -- 	Comment = { italic = true },
+    -- 	["@comment"] = { italic = true },
+    -- },
   },
 
   ui = {

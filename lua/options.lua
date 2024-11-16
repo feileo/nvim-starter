@@ -4,7 +4,7 @@ local o = vim.o
 local g = vim.g
 
 o.cindent = true
--- o.cursorlineopt = 'both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 
 o.smarttab = true
 
