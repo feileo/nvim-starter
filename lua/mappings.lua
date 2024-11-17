@@ -31,6 +31,8 @@ nomap("n", "<leader>th")
 
 local map = vim.keymap.set
 
+map({ "n" } , "q", "<nop>", { desc = "disable q", noremap=true, silent=true })
+map({ "n" } , "@", "q", { desc = "macro recording", noremap=true, silent=true })
 map({ "n" }, "<C-]>", "z4l", { desc = "move right 4 line" })
 map({ "n" }, "<C-[>", "z4h", { desc = "move left 4 line" })
 map({ "n", "i" }, "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
