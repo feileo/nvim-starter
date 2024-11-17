@@ -5,6 +5,17 @@ local config = {
       search_up = { kind = "search", pattern = "^%?", icon = "󰱽 | 󰑑 | ", lang = "regex" },
     },
   },
+  messages = {
+    enabled = false,
+  },
+  notify = {
+    enabled = false,
+  },
+  lsp = {
+    message = {
+      enabled = false,
+    },
+  },
   routes = {
     {
       view = "notify",

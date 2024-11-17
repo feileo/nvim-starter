@@ -36,7 +36,7 @@ local servers = {
   },
 }
 
-local nvlsp = require("nvchad.configs.lspconfig")
+local nvlsp = require "nvchad.configs.lspconfig"
 
 -- override default settings
 nvlsp.on_attach = function(_, bufnr)
@@ -54,7 +54,7 @@ nvlsp.on_attach = function(_, bufnr)
   map("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts "LSP peek definition")
   map("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>", opts "LSP peek type definition")
   map("n", "gf", "<cmd>Lspsaga finder<CR>", opts "LSP finder")
-  map("n", "gi", "<cmd>finder imp<CR>", opts "LSP implementation")
+  map("n", "gi", "<cmd>Lspsaga finder imp<CR>", opts "LSP implementation")
   map("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts "LSP references")
   -- map("n", "gn", "<cmd>Lspsaga rename<CR>", opts "LSP rename")
   map("n", "gn", require "nvchad.lsp.renamer", opts "NvRenamer")
