@@ -8,7 +8,7 @@ o.cursorlineopt = "both" -- to enable cursorline!
 
 o.smarttab = true
 
--- o.backup = false
+o.backup = false
 o.wrap = false
 
 o.ttyfast = true

@@ -43,6 +43,14 @@ return {
   },
 
   {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = function()
       return require "configs.nvimtree"
@@ -100,17 +108,11 @@ return {
   },
 
   {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    opts = {},
+    "yamatsum/nvim-cursorline",
+    init = function()
+      require("nvim-cursorline").setup(require "configs.cursorline")
+    end,
   },
-
-  -- {
-  --   "yamatsum/nvim-cursorline",
-  --   init = function()
-  --     require("nvim-cursorline").setup(require "configs.cursorline")
-  --   end,
-  -- },
 
   {
     "glepnir/dashboard-nvim",

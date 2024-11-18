@@ -199,4 +199,36 @@ M.closeBufs_at_direction = function(x)
   end
 end
 
+M.close_window = function()
+  -- 获取当前窗口列表
+  local windows = vim.api.nvim_list_wins()
+  local win_count = #windows
+  local current_win = vim.api.nvim_get_current_win()
+
+  -- 如果窗口数量等于 2
+  if win_count == 2 then
+    local nvim_tree_open = false
+
+    -- 遍历所有窗口，检查缓冲区名称
+    for _, win in ipairs(windows) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      local buf_name = vim.api.nvim_buf_get_name(buf)
+
+      -- 检查缓冲区名称是否包含 "NvimTree_" 且不是当前窗口
+      if buf_name:match "NvimTree_" and win ~= current_win then
+        nvim_tree_open = true
+        break
+      end
+    end
+
+    -- 如果有一个窗口的缓冲区名称包含 "NvimTree_" 且不是当前窗口，则不执行任何操作
+    if nvim_tree_open then
+      return
+    end
+  end
+
+  -- 关闭当前窗口
+  vim.cmd "wincmd c" -- 或者使用更简洁的 '<C-w>c'
+end
+
 return M

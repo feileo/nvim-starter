@@ -12,3 +12,5 @@ create_command("ExitSafe", util.exit_safe, { desc = "Safe exit" })
 create_command("MouseToggle", util.toggle_mouse, { desc = "Toggle mouse" })
 
 create_command("PeekDefinitionToggle", util.toggle_peek_definition, { desc = "Toggle lspsaga peek definition" })
+
+create_command("CloseWindow", util.close_window, { desc = "Close Window" })

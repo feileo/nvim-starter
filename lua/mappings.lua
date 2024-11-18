@@ -29,9 +29,7 @@ nomap("n", "<leader>pt")
 nomap("n", "<leader>th")
 
 
-local map = vim.keymap.set
-
-map({ "n" } , "q", "<nop>", { desc = "disable q", noremap=true, silent=true })
+local map = vim.keymap.set map({ "n" } , "q", "<nop>", { desc = "disable q", noremap=true, silent=true })
 map({ "n" } , "@", "q", { desc = "macro recording", noremap=true, silent=true })
 map({ "n" }, "<C-]>", "z4l", { desc = "move right 4 line" })
 map({ "n" }, "<C-[>", "z4h", { desc = "move left 4 line" })
@@ -51,8 +49,8 @@ map({ "n" }, "<A-q>", "<cmd>ExitSafe<CR>", { desc = "command quit vim" })
 map({ "x" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "command dont copy replaced text" })
 
 -- buffers and windows
-map("n", "<leader>w", "<cmd>update<CR>", { desc = "buffer save" })
-map("n", "<leader>W", "<cmd>wa<CR>", { desc = "buffer save all" })
+map("n", "<leader>w", "<cmd>update<CR>", { desc = "buffer save buffer" })
+map("n", "<leader>W", "<cmd>wa<CR>", { desc = "buffer save all buffer" })
 map("n", "<leader>x", function() require("nvchad.tabufline").close_buffer() end, { desc = "buffer close buffer" })
 map("n", "<leader>X", function() require("util").closeBufs_at_direction() end, { desc = "buffer close other" })
 map("n", "<tab>", function() require("nvchad.tabufline").next() end, { desc = "buffer goto next" })
@@ -63,7 +61,6 @@ map("n", "<leader><tab>", "<cmd>Telescope buffers<CR>", { desc = "buffer list" }
 map("n", "'", "<cmd>NvimTreeToggle<CR>", { desc = "toggle nvimtree window" })
 -- map("n", "\"", "<cmd>NvimTreeFocus<CR>", { desc = "toggle focus nvimtree window" })
 map("n", "\"", "<cmd>NvimTreeFocus<CR>", { desc = "toggle focus nvimtree window" })
-
 
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
@@ -76,11 +73,11 @@ map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "telescope find ke
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 map("n", "<leader>fc", "<cmd>Telescope commands<CR>", { desc = "telescope find commands" })
+map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gs", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 
-map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 map("n", "<leader>th", function() require("nvchad.themes").open() end, { desc = "telescope nvchad themes" })
 map("n", "<leader>9", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "telescope lsp document symbols" })
 

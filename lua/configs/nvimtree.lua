@@ -7,7 +7,7 @@ local function my_on_attach(bufnr)
   api.config.mappings.default_on_attach(bufnr)
 
   local function opts(desc)
-      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
   -- custom mappings
@@ -16,24 +16,15 @@ local function my_on_attach(bufnr)
   -- vim.keymap.set("n", "d", api.fs.trash, opts "Trash")
   -- vim.keymap.set("n", "D", api.fs.remove, opts "Delete")
   -- vim.keymap.set("n", "K", api.node.show_info_popup, opts "Info")
-
-  -- auto close in last buffer
-  vim.api.nvim_create_autocmd("BufEnter", {
-    nested = true,
-    callback = function()
-      if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match "NvimTree_" ~= nil then
-        vim.cmd "quit"
-      end
-    end,
-  })
 end
 
 local config = {
   on_attach = my_on_attach,
+  sort_by = "case_sensitive",
   respect_buf_cwd = true,
   update_focused_file = {
     enable = true,
-    update_root = true,
+    update_root = false,
   },
   -- view = {
   --   signcolumn = "no",

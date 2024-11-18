@@ -65,11 +65,10 @@ nvlsp.on_attach = function(_, bufnr)
   map("n", "gci", "<cmd>Lspsaga incoming_calls<CR>", opts "LSP incoming_calls")
 
   map("n", "<leader>d", "<cmd>Lspsaga goto_definition<CR>", opts "LSP goto definition")
+  map("n", "<leader>p", "<cmd>Lspsaga peek_definition<CR>", opts "LSP peek definition")
   map("n", "<leader>e", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts "LSP show buf diagnostics")
   map("n", "<leader>E", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts "LSP show work diagnostics")
   map("n", "<leader>0", "<cmd>Lspsaga outline<CR>", opts "LSP symbols outline")
-
-  map("n", "<C-p>", "<cmd>Lspsaga peek_definition<CR>", opts "LSP peek definition")
 end
 
 -- lsps with config
