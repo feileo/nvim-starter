@@ -17,37 +17,41 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 local file_picker_options = {
-  layout_strategy = "horizontal",
+  -- layout_strategy = "horizontal",
   layout_config = {
     horizontal = {
-      prompt_position = "top",
+      prompt_position = "top", --'bottom'
+      -- mirror = true,
+      width = 0.40,
+      height = 0.70,
+      preview_cutoff = 10000, -- When columns are less than this value, the preview will be disabled
     },
-    vertical = {
-      mirror = false,
+  },
+  mappings = {
+    i = {
+      ["<C-s>"] = actions.select_horizontal,
+      ["<Tab>"] = actions.move_selection_next,
     },
-    width = 0.38,
-    height = 0.6,
-    preview_cutoff = 1200000,
   },
 }
 
 local buffer_picker_options = {
+  -- layout_strategy = "horizontal",
   layout_config = {
     horizontal = {
-      prompt_position = "top",
-      preview_width = 0.40,
-      results_width = 0.80,
+      prompt_position = "top", --'bottom'
+      width = 0.40,
+      height = 0.70,
+      preview_cutoff = 10000, -- When columns are less than this value, the preview will be disabled
+      -- preview_width = 0.40,
+      -- results_width = 0.70,
     },
-    vertical = {
-      mirror = false,
-    },
-    width = 0.38,
-    height = 0.6,
-    preview_cutoff = 1200000,
   },
   mappings = {
     i = {
       ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+      ["<C-s>"] = actions.select_horizontal,
+      ["<Tab>"] = actions.move_selection_next,
     },
   },
 }
@@ -56,6 +60,7 @@ local config = {
   defaults = {
     vimgrep_arguments = {
       "rg",
+      "-L",
       "--color=never",
       "--no-heading",
       "--with-filename",
@@ -64,22 +69,19 @@ local config = {
       "--smart-case",
       "--trim", -- add this value
     },
-    selection_caret = "",
-    entry_prefix = "",
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.45,
+        results_width = 0.70,
+      },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.90,
+      height = 0.80,
+    },
     buffer_previewer_maker = new_maker,
-  },
-  layout_config = {
-    horizontal = {
-      prompt_position = "top",
-      preview_width = 0.40,
-      results_width = 0.80,
-    },
-    vertical = {
-      mirror = false,
-    },
-    width = 0.85,
-    height = 0.60,
-    preview_cutoff = 140,
   },
   mappings = {
     n = {
@@ -87,7 +89,8 @@ local config = {
       ["<esc>"] = actions.close,
     },
     i = {
-      ["<esc>"] = actions.close,
+      ["<C-s>"] = actions.select_horizontal,
+      ["<Tab>"] = actions.move_selection_next,
     },
   },
   pickers = {
