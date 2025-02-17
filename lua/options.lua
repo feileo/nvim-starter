@@ -6,6 +6,7 @@ local g = vim.g
 o.cindent = true
 o.cursorlineopt = "both" -- to enable cursorline!
 
+o.breakindent = true
 o.smarttab = true
 
 o.backup = false
@@ -17,7 +18,7 @@ o.startofline = true
 o.signcolumn = "auto"
 o.termguicolors = true
 
-o.mouse = ""
+o.mouse = "a"
 
 g.go_highlight_comma = 1
 g.go_highlight_semicolon = 1

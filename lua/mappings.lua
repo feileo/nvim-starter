@@ -28,9 +28,14 @@ nomap("n", "<leader>ch")
 nomap("n", "<leader>pt")
 nomap("n", "<leader>th")
 
+local map = vim.keymap.set
 
-local map = vim.keymap.set map({ "n" } , "q", "<nop>", { desc = "disable q", noremap=true, silent=true })
-map({ "n" } , "@", "q", { desc = "macro recording", noremap=true, silent=true })
+map({ "n" }, "<C-i>", "<C-i>", { noremap = true, silent = true }) -- 恢复 <C-i> 的默认跳转行为
+map({ "n" }, "q", "<nop>", { noremap = true, silent = true })
+map({ "n" }, "@", "q", { desc = "macro recording", noremap = true, silent = true })
+
+map({ "x" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "command dont copy replaced text" })
+
 map({ "n" }, "<C-]>", "z4l", { desc = "move right 4 line" })
 map({ "n" }, "<C-[>", "z4h", { desc = "move left 4 line" })
 map({ "n", "i" }, "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
@@ -44,25 +49,32 @@ map({ "n" }, ";", ":", { desc = "command enter command mode" })
 map({ "n" }, "<C-q>", "<cmd>q<CR>", { desc = "command quit vim" })
 map({ "n" }, "<C-c>", "<cmd>wincmd c<CR>", { desc = "command quit vim" })
 map({ "n" }, "<A-q>", "<cmd>ExitSafe<CR>", { desc = "command quit vim" })
--- map({ "x" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "move down" })
--- map({ "x" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "move up" })
-map({ "x" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "command dont copy replaced text" })
+
+-- map({ 'n' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- map({ 'n' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true, silent = true })
+map({ "n", "x" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true, silent = true })
+map({ "n", "v" }, "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true, silent = true })
+map({ "n", "v" }, "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true, silent = true })
 
 -- buffers and windows
 map("n", "<leader>w", "<cmd>update<CR>", { desc = "buffer save buffer" })
 map("n", "<leader>W", "<cmd>wa<CR>", { desc = "buffer save all buffer" })
-map("n", "<leader>x", function() require("nvchad.tabufline").close_buffer() end, { desc = "buffer close buffer" })
-map("n", "<leader>X", function() require("util").closeBufs_at_direction() end, { desc = "buffer close other" })
-map("n", "<tab>", function() require("nvchad.tabufline").next() end, { desc = "buffer goto next" })
-map("n", "<S-tab>", function() require("nvchad.tabufline").prev() end, { desc = "buffer goto prev" })
+-- map("n", "<leader>x", function() require("nvchad.tabufline").close_buffer() end, { desc = "buffer close buffer" })
+-- map("n", "<leader>X", function() require("nvchad.tabufline").closeAllBufs() end, { desc = "buffer close other" })
+-- map("n", "<tab>", function() require("nvchad.tabufline").next() end, { desc = "buffer goto next" })
+-- map("n", "<S-tab>", function()  require("nvchad.tabufline").prev() end, { desc = "buffer goto prev" })
+map("n", "<tab>", ":bnext<CR>", { desc = "buffer goto next", silent = true })
+map("n", "<S-tab>", ":bprevious<CR>", { desc = "buffer goto prev", silent = true })
 map("n", "<leader><tab>", "<cmd>Telescope buffers<CR>", { desc = "buffer list" })
 
 -- nvimtree
 map("n", "'", "<cmd>NvimTreeToggle<CR>", { desc = "toggle nvimtree window" })
 -- map("n", "\"", "<cmd>NvimTreeFocus<CR>", { desc = "toggle focus nvimtree window" })
-map("n", "\"", "<cmd>NvimTreeFocus<CR>", { desc = "toggle focus nvimtree window" })
+map("n", '"', "<cmd>NvimTreeFocus<CR>", { desc = "toggle focus nvimtree window" })
 
 -- telescope
+map("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "telescope find all files" })
@@ -84,19 +96,15 @@ map("n", "<leader>9", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "teles
 -- terminal
 -- map("n", "<leader>h", function() require("nvchad.term").new { pos = "sp" } end, { desc = "terminal new horizontal term" })
 -- map("n", "<leader>v", function() require("nvchad.term").new { pos = "vsp" } end, { desc = "terminal new vertical term" })
-map({ "n", "t" }, "<A-v>", function() require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" } end,
-    { desc = "terminal toggleable vertical term" })
-map({ "n", "t" }, "<A-s>", function() require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" } end,
-    { desc = "terminal toggleable horizontal term" })
-map({ "n", "t" }, "<A-m>", function() require("nvchad.term").toggle { pos = "float", id = "floatTerm" } end,
-    { desc = "terminal toggle floating term" })
+map({ "n", "t" }, "<A-v>", function() require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" } end, { desc = "terminal toggleable vertical term" })
+map({ "n", "t" }, "<A-s>", function() require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" } end, { desc = "terminal toggleable horizontal term" })
+map({ "n", "t" }, "<A-m>", function() require("nvchad.term").toggle { pos = "float", id = "floatTerm" } end, { desc = "terminal toggle floating term" })
 -- map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 map("t", "<C-c>", "<C-d><cmd>q<CR>", { desc = "terminal close terminal" })
 
 -- interestingwords
 map("n", "<A-i>", "<cmd>Interestingwords --toggle<CR>", { desc = "interestingwords toggle" })
 map("n", "<A-I>", "<cmd>Interestingwords --remove_all<CR>", { desc = "interestingwords remove all" })
-
 
 -- translator
 map("n", "<leader>t", "<Plug>TranslateW", { desc = "translate" })

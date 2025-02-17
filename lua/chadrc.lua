@@ -24,6 +24,11 @@ local M = {
         icon = "󱓻",
       },
     },
+
+    tabufline = {
+      enabled = false,
+    },
+
     statusline = {
       separator_style = "block",
     },

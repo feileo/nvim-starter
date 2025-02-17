@@ -51,19 +51,43 @@ return {
   },
 
   {
+    "yamatsum/nvim-cursorline",
+    init = function()
+      require("nvim-cursorline").setup(require "configs.cursorline")
+    end,
+  },
+
+  {
+    "glepnir/dashboard-nvim",
+    event = "VimEnter",
+    opts = function()
+      return require "configs.dashboard"
+    end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+
+  -- {
+  --   "tpope/vim-sleuth",
+  -- },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = function()
       return require "configs.nvimtree"
     end,
   },
 
-  {
-    "stevearc/conform.nvim",
-    event = "BufWritePre",
-    opts = function()
-      return require "configs.conform"
-    end,
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   event = "VimEnter",
+  --   opts = function()
+  --     return require "configs.lualine"
+  --   end,
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- },
 
   {
     "lewis6991/gitsigns.nvim",
@@ -77,6 +101,22 @@ return {
     "williamboman/mason.nvim",
     opts = function()
       return require "configs.mason"
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    -- event = "VimEnter",
+    opts = function()
+      return require "configs.treesitter"
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    event = "BufWritePre",
+    opts = function()
+      return require "configs.conform"
     end,
   },
 
@@ -100,33 +140,6 @@ return {
   },
 
   {
-    "nvim-treesitter/nvim-treesitter",
-    -- event = "VimEnter",
-    opts = function()
-      return require "configs.treesitter"
-    end,
-  },
-
-  {
-    "yamatsum/nvim-cursorline",
-    init = function()
-      require("nvim-cursorline").setup(require "configs.cursorline")
-    end,
-  },
-
-  {
-    "glepnir/dashboard-nvim",
-    event = "VimEnter",
-    opts = function()
-      return require "configs.dashboard"
-    end,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-
-  {
     "leisiji/interestingwords.nvim",
     cmd = "Interestingwords",
   },
@@ -138,18 +151,6 @@ return {
     config = function()
       require("nvim-surround").setup {}
     end,
-  },
-
-  {
-    "olexsmir/gopher.nvim",
-    ft = "go",
-    opt = function()
-      return require "configs.gopher"
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
   },
 
   {
@@ -195,4 +196,31 @@ return {
   --     { "MunifTanjim/nui.nvim" },
   --   },
   -- },
+
+  -- {
+  --     "ray-x/go.nvim",
+  --     dependencies = {  -- optional packages
+  --       "ray-x/guihua.lua",
+  --       "neovim/nvim-lspconfig",
+  --       "nvim-treesitter/nvim-treesitter",
+  --     },
+  --     config = function()
+  --         require("go").setup()
+  --     end,
+  --     event = {"CmdlineEnter"},
+  --     ft = {"go", 'gomod'},
+  --     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  -- },
+
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    opt = function()
+      return require "configs.gopher"
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 }

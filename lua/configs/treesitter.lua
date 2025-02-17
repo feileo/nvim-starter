@@ -1,4 +1,4 @@
-local default_config = require("nvchad.configs.treesitter")
+local default_config = require "nvchad.configs.treesitter"
 
 local config = {
   ensure_installed = {
@@ -9,17 +9,21 @@ local config = {
     "javascript",
     "typescript",
     "tsx",
+    "html",
+    "css",
     "c",
     "markdown",
     "markdown_inline",
     "thrift",
     "json",
     "yaml",
+    "toml",
     "sql",
     "regex",
     "bash",
     "python",
-    -- "go"
+    "go",
+    "rust",
   },
 
   highlight = {
