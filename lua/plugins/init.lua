@@ -10,7 +10,7 @@ return {
   },
 
   {
-    "nvchad/ui",
+    "feileo/ui",
     lazy = false,
     config = function()
       require "nvchad"
