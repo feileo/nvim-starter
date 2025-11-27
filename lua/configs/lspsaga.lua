@@ -42,9 +42,10 @@ local opts = {
   },
   rename = {
     auto_save = false,
+    in_select = false,
     keys = {
       select = "x",
-      quit = { "q", "<ESC>", "<C-c>" },
+      quit = { "q", "<ESC>" },
     },
   },
   diagnostic = {

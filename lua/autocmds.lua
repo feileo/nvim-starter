@@ -2,6 +2,7 @@ require "nvchad.autocmds"
 
 local create_autocmd = vim.api.nvim_create_autocmd
 
+-- Restore cursor position
 create_autocmd("BufReadPost", {
   pattern = "*",
   callback = function()
@@ -13,6 +14,17 @@ create_autocmd("BufReadPost", {
       and vim.fn.index({ "xxd", "gitrebase" }, vim.bo.filetype) == -1
     then
       vim.cmd 'normal! g`"'
+    end
+  end,
+})
+
+-- Show Dashboard when all buffers are closed
+create_autocmd("BufDelete", {
+  callback = function()
+    local bufs = vim.t.bufs
+    if #bufs == 1 and vim.api.nvim_buf_get_name(bufs[1]) == "" then
+      vim.cmd "NvimTreeClose"
+      vim.cmd "Dashboard"
     end
   end,
 })

@@ -19,18 +19,15 @@ local M = {
   ui = {
     cmp = {
       style = "atom_colored",
-      format_colors = {
-        tailwind = true, -- will work for css lsp too
-        icon = "󱓻",
-      },
     },
 
     tabufline = {
-      enabled = false,
+      enabled = true,
     },
 
     statusline = {
-      separator_style = "block",
+      theme = "minimal",
+      separator_style = "round",
     },
   },
 
@@ -43,6 +40,8 @@ local M = {
       height = 0.6,
     },
   },
+
+  lsp = { signature = false },
 
   colorify = {
     enabled = false,

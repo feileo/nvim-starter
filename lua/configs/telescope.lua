@@ -49,7 +49,8 @@ local buffer_picker_options = {
   },
   mappings = {
     i = {
-      ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+      -- ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+      ["<c-d>"] = actions.delete_buffer,
       ["<C-s>"] = actions.select_horizontal,
       ["<Tab>"] = actions.move_selection_next,
     },
