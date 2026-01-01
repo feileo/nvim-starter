@@ -30,9 +30,10 @@ return {
     end,
   },
 
+  -- disable default plugin which-key
   {
     "folke/which-key.nvim",
-    enabled = false, -- disable default plugin
+    enabled = false,
   },
 
   {
