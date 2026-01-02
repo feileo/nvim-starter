@@ -53,7 +53,8 @@ return {
 
   {
     "yamatsum/nvim-cursorline",
-    init = function()
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
       require("nvim-cursorline").setup(require "configs.cursorline")
     end,
   },
@@ -216,7 +217,7 @@ return {
   {
     "olexsmir/gopher.nvim",
     ft = "go",
-    opt = function()
+    opts = function()
       return require "configs.gopher"
     end,
     dependencies = {

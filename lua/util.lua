@@ -71,7 +71,7 @@ end
 M.exit_safe = function()
   local unsaved_buffers = false
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(bufnr) and vim.api.nvim_buf_get_option(bufnr, "modified") then
+    if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].modified then
       unsaved_buffers = true
       break
     end

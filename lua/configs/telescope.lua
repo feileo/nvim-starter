@@ -83,15 +83,15 @@ local config = {
       height = 0.80,
     },
     buffer_previewer_maker = new_maker,
-  },
-  mappings = {
-    n = {
-      ["q"] = actions.close,
-      ["<esc>"] = actions.close,
-    },
-    i = {
-      ["<C-s>"] = actions.select_horizontal,
-      ["<Tab>"] = actions.move_selection_next,
+    mappings = {
+      n = {
+        ["q"] = actions.close,
+        ["<esc>"] = actions.close,
+      },
+      i = {
+        ["<C-s>"] = actions.select_horizontal,
+        ["<Tab>"] = actions.move_selection_next,
+      },
     },
   },
   pickers = {
