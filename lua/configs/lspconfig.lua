@@ -34,16 +34,17 @@ local servers = {
   },
 }
 
--- local nvlsp = require "nvchad.configs.lspconfig"
--- local lspconfig = require "lspconfig"
+local nvlsp = require "nvchad.configs.lspconfig"
+local lspconfig = require "lspconfig"
 
--- -- lsps with config
--- for name, opts in pairs(servers) do
---   opts.on_init = nvlsp.on_init
---   opts.on_attach = nvlsp.on_attach
---   opts.capabilities = nvlsp.capabilities
+-- lsps with config
+for name, opts in pairs(servers) do
+  opts.on_init = nvlsp.on_init
+  opts.on_attach = nvlsp.on_attach
+  opts.capabilities = nvlsp.capabilities
 
---   lspconfig[name].setup(opts)
--- end
+  lspconfig[name].setup(opts)
+end
 
-vim.lsp.enable(servers)
+-- local servers = { "html", "cssls" }
+-- vim.lsp.enable(servers)
