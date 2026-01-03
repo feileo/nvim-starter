@@ -32,6 +32,12 @@ local config = {
   git = {
     enable = true,
     ignore = false,
+    show_on_dirs = true,
+    show_on_open_dirs = true,
+  },
+  modified = {
+    enable = true, -- 显示已修改文件标记
+    show_on_dirs = true,
   },
   filters = {
     dotfiles = false,
@@ -57,6 +63,9 @@ local config = {
     },
   },
   renderer = {
+    root_folder_label = function(path)
+      return " " .. vim.fn.fnamemodify(path, ":t") -- 只显示项目名
+    end,
     indent_markers = {
       enable = false,
     },
@@ -65,7 +74,7 @@ local config = {
         git = true,
       },
     },
-  },
+  }
 }
 
 return vim.tbl_deep_extend("force", default_config, config)

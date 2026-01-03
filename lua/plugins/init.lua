@@ -124,6 +124,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    version = "v1.2.0", -- 锁定版本，避免弃用警告
     config = function()
       require "configs.lspconfig"
     end,
@@ -144,6 +145,22 @@ return {
   {
     "leisiji/interestingwords.nvim",
     cmd = "Interestingwords",
+  },
+
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "InsertEnter",
+    opts = function()
+      return require "configs.supermaven"
+    end,
+  },
+
+  -- 覆盖 nvim - cmp 配置以与 supermaven 协作
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      return require "configs.cmp"
+    end,
   },
 
   {

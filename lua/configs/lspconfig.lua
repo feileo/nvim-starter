@@ -11,6 +11,8 @@ local servers = {
     filetypes = { "go", "gomod" },
     settings = {
       gopls = {
+        -- 关闭语义标记，使用 Tree-sitter 方案
+        semanticTokens = false,
         experimentalPostfixCompletions = true,
         analyses = {
           unusedparams = true,

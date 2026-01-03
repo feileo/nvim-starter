@@ -2,18 +2,14 @@
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
 -- Please read that file to know all available options :(
 
-local highlight = require "highlights"
+local highlights = require "highlights"
 
 ---@type ChadrcConfig
 local M = {
   base46 = {
     theme = "onedark",
-    hl_override = highlight.override,
-    hl_add = highlight.add,
-    -- hl_override = {
-    -- 	Comment = { italic = true },
-    -- 	["@comment"] = { italic = true },
-    -- },
+    hl_override = highlights.override,
+    hl_add = highlights.add,
   },
 
   ui = {

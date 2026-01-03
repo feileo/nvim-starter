@@ -36,10 +36,10 @@ map({ "n" }, "@", "q", { desc = "macro recording", noremap = true, silent = true
 
 map({ "x" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "command dont copy replaced text" })
 
-map({ "n" }, "<C-]>", "z4l", { desc = "move right 4 line" })
-map({ "n" }, "<C-[>", "z4h", { desc = "move left 4 line" })
 map({ "n", "i" }, "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map({ "n", "i" }, "<C-n>", "<End>", { desc = "move end of line" })
+map({ "n" }, "<C-]>", "z4l", { desc = "move right 4 line" })
+map({ "n" }, "<C-[>", "z4h", { desc = "move left 4 line" })
 map({ "v" }, "<C-k>", ":move-2<CR>gv", { desc = "move lines up" })
 map({ "v" }, "<C-j>", ":move'>+<CR>gv", { desc = "move lines down" })
 map({ "v" }, "<C-h>", "<gv", { desc = "move lines left" })
@@ -63,7 +63,7 @@ map("n", "<leader>W", "<cmd>wa<CR>", { desc = "buffer save all buffer" })
 map("n", "<leader>x", function() require("nvchad.tabufline").close_buffer() end, { desc = "buffer close buffer" })
 map("n", "<leader>X", function() require("nvchad.tabufline").closeAllBufs() end, { desc = "buffer close other" })
 map("n", "<tab>", function() require("nvchad.tabufline").next() end, { desc = "buffer goto next" })
-map("n", "<S-tab>", function()  require("nvchad.tabufline").prev() end, { desc = "buffer goto prev" })
+map("n", "<S-tab>", function() require("nvchad.tabufline").prev() end, { desc = "buffer goto prev" })
 -- map("n", "<tab>", ":bnext<CR>", { desc = "buffer goto next", silent = true })
 -- map("n", "<S-tab>", ":bprevious<CR>", { desc = "buffer goto prev", silent = true })
 map("n", "<leader><tab>", "<cmd>Telescope buffers<CR>", { desc = "buffer list" })
@@ -77,7 +77,8 @@ map("n", '"', "<cmd>NvimTreeFocus<CR>", { desc = "toggle focus nvimtree window" 
 map("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
-map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "telescope find all files" })
+map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+    { desc = "telescope find all files" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "telescope find keymaps" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
@@ -86,20 +87,24 @@ map("n", "<leader>fc", "<cmd>Telescope commands<CR>", { desc = "telescope find c
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 
 map("n", "<leader>ss", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
-map("n", "<leader>sw", ":<C-U><C-R>=printf('Telescope live_grep default_text=%s', expand('<cword>'))<CR><CR>", { desc = "telescope live grep cursor word" })
+map("n", "<leader>sw", ":<C-U><C-R>=printf('Telescope live_grep default_text=%s', expand('<cword>'))<CR><CR>",
+    { desc = "telescope live grep cursor word" })
+map("n", "<leader>sd", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "telescope find lsp document symbols" })
 
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gs", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 
 map("n", "<leader>th", function() require("nvchad.themes").open() end, { desc = "telescope nvchad themes" })
-map("n", "<leader>9", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "telescope lsp document symbols" })
 
 -- terminal
 -- map("n", "<leader>h", function() require("nvchad.term").new { pos = "sp" } end, { desc = "terminal new horizontal term" })
 -- map("n", "<leader>v", function() require("nvchad.term").new { pos = "vsp" } end, { desc = "terminal new vertical term" })
-map({ "n", "t" }, "<A-v>", function() require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" } end, { desc = "terminal toggleable vertical term" })
-map({ "n", "t" }, "<A-s>", function() require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" } end, { desc = "terminal toggleable horizontal term" })
-map({ "n", "t" }, "<A-m>", function() require("nvchad.term").toggle { pos = "float", id = "floatTerm" } end, { desc = "terminal toggle floating term" })
+map({ "n", "t" }, "<A-v>", function() require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" } end,
+    { desc = "terminal toggleable vertical term" })
+map({ "n", "t" }, "<A-s>", function() require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" } end,
+    { desc = "terminal toggleable horizontal term" })
+map({ "n", "t" }, "<A-m>", function() require("nvchad.term").toggle { pos = "float", id = "floatTerm" } end,
+    { desc = "terminal toggle floating term" })
 -- map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 map("t", "<C-c>", "<C-d><cmd>q<CR>", { desc = "terminal close terminal" })
 
