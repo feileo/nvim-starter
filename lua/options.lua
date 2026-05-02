@@ -21,7 +21,7 @@ o.termguicolors = true
 o.mouse = "a"
 
 if vim.g.neovide then
-    vim.o.guifont = "Maple Mono NF CN:h14"       -- 字体配置
+    vim.o.guifont = "Maple Mono NF CN:h13"       -- 字体配置
     vim.g.neovide_line_space = 2                 -- 行间距
     vim.g.neovide_scale_factor = 1.0             -- 缩放
     vim.g.neovide_scroll_animation_length = 0.3  -- 平滑滚动

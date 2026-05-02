@@ -136,8 +136,10 @@ syntax cluster goDotExpr contains=goFuncCall,goStructLiteral,goTypeAssertion,goF
 "       blah
 "
 " Both 'baz' and 'blah' are correctly highlighted as fields
-syntax region goDotComment start=+//+  end=+$+   contained contains=@goCommentSpell,goCommentTodo keepend skipwhite skipnl nextgroup=@goDotExpr
-syntax region goDotComment start=+/\*+ end=+\*/+ contained contains=@goCommentSpell,goCommentTodo keepend skipwhite skipnl nextgroup=@goDotExpr
+"syntax region goDotComment start=+//+  end=+$+   contained contains=@goCommentSpell,goCommentTodo keepend skipwhite skipnl nextgroup=@goDotExpr
+"syntax region goDotComment start=+/\*+ end=+\*/+ contained contains=@goCommentSpell,goCommentTodo keepend skipwhite skipnl nextgroup=@goDotExpr
+syntax region goDotComment start=+//+  end=+$+   contained contains=@goCommentSpell keepend skipwhite skipnl nextgroup=@goDotExpr
+syntax region goDotComment start=+/\*+ end=+\*/+ contained contains=@goCommentSpell keepend skipwhite skipnl nextgroup=@goDotExpr
 
 syntax match goField /\K\k*/ contained
 
@@ -173,13 +175,15 @@ call s:HiConfig('goSemicolon', ['go_highlight_semicolon'], #{default: 0})
 
 " Comments {{{
 
-syntax region  goComment start=+//+  end=+$+   contains=@goCommentSpell,goCommentTodo keepend
-syntax region  goComment start=+/\*+ end=+\*/+ contains=@goCommentSpell,goCommentTodo keepend
+"syntax region  goComment start=+//+  end=+$+   contains=@goCommentSpell,goCommentTodo keepend
+"syntax region  goComment start=+/\*+ end=+\*/+ contains=@goCommentSpell,goCommentTodo keepend
+syntax region  goComment start=+//+  end=+$+   contains=@goCommentSpell keepend
+syntax region  goComment start=+/\*+ end=+\*/+ contains=@goCommentSpell keepend
 
-syntax keyword goCommentTodo     contained TODO FIXME XXX TBD NOTE
+"syntax keyword goCommentTodo     contained TODO FIXME XXX TBD NOTE
 syntax region  goGenerateComment start=+//go:generate+ end=+$+ contained containedin=goComment
 
-hi link goCommentTodo     Todo
+"hi link goCommentTodo     Todo
 hi link goComment         Comment
 hi link goGenerateComment PreProc
 

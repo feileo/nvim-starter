@@ -13,7 +13,7 @@ local function my_on_attach(bufnr)
   -- custom mappings
   -- https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
   vim.keymap.set("n", "<C-s>", api.node.open.horizontal, opts "Open: Horizontal Split")
-  vim.keymap.set("n", "o", api.node.open.preview, opts "Open Preview")
+  vim.keymap.set("n", "<C-p>", api.node.open.preview, opts "Open Preview")
   vim.keymap.set({ "n", "x" }, "d", api.fs.trash, opts "Trash")
   vim.keymap.set({ "n", "x" }, "D", api.fs.remove, opts "Delete")
   vim.keymap.set("n", "K", api.node.show_info_popup, opts "Info")

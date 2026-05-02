@@ -31,7 +31,7 @@ local fg_keyword_2 = "#e63995"
 local fg_keyword_3 = "#C8A2C8"
 local fg_keyword_4 = "#C8A2C8"
 
-local fg_type = "#E69966"           --"#E0C085" -- "#d19a66"
+local fg_type = "#E69966" --"#E0C085" -- "#d19a66"
 local fg_primitive_type = "#87AFFF" -- "#00d7ff"
 local fg_nonprimitive_type = "#00d7d7"
 
@@ -39,10 +39,10 @@ local fg_function = "#61afef"
 local fg_function_builtins = "#83D7EC" -- "#00d7ff" --"#F08080"
 
 local fg_conditional = "#D37A86"
-local fg_repeat = "#D37A86"      --"#e06c75"
+local fg_repeat = "#D37A86" --"#e06c75"
 local fg_delimiter = "#b2b2b2"
 local fg_delimiter_2 = "#D27277" -- #DB7093
-local fg_operator = "#b2b2b2"    --"#DB7093"
+local fg_operator = "#b2b2b2" --"#DB7093"
 local fg_operator_sp = "#575C63"
 local fg_operator_2 = "#767676"
 local fg_operator_ptr = "#e63995" --"#DB7093"
@@ -98,7 +98,7 @@ M.override = {
   -- Tag = {},
   Delimiter = { fg = fg_delimiter_2 },
   -- Todo = {},
-  Comment = { italic = true },
+  Comment = { italic = false },
   SpecialComment = { italic = true },
   ------------------------- plugins -------------------------
   -- TelescopeMatching = { fg = "red" },
@@ -130,7 +130,7 @@ M.add = {
   -- goCommaExpr= { fg = "" },
 
   -- Semicolon
-  goSemicolon = { fg = fg_operator },     -- Delimiter
+  goSemicolon = { fg = fg_operator }, -- Delimiter
   goUnderscore = { fg = fg_operator_sp }, -- Special
 
   -- Simple Blocks
@@ -140,7 +140,7 @@ M.add = {
 
   -- comments
   -- goCommentTodo = { fg = "" }, -- Todo
-  -- goComment = { fg = cgrey__  }, -- Comment
+  -- goComment = { italic = false }, -- Comment
   -- goGenerateComment = { fg = "",  }, -- PreProc
 
   -- literals
@@ -229,7 +229,7 @@ M.add = {
   goVariadic = { fg = fg_operator_2 },
   goArgSpread = { fg = fg_operator_2 },
 
-  goParam = { fg = fg_param },     -- Identifier
+  goParam = { fg = fg_param }, -- Identifier
   -- goParamComma = { fg = "" },
   goTypeParam = { fg = fg_param }, -- Identifier
   -- goTypeParamComma = { fg = "" },
@@ -294,7 +294,7 @@ M.add = {
 
   ------ For Noice ------
   -- Cmdline 边框颜色（普通命令）
-  NoiceCmdlinePopupBorder = { fg = cbule__ },       -- 蓝色边框
+  NoiceCmdlinePopupBorder = { fg = cbule__ }, -- 蓝色边框
   NoiceCmdlinePopupBorderSearch = { fg = cyellow }, -- 搜索时黄色边框
 
   -- Cmdline 图标颜色
