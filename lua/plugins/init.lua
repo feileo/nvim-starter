@@ -71,25 +71,12 @@ return {
     },
   },
 
-  -- {
-  --   "tpope/vim-sleuth",
-  -- },
-
   {
     "nvim-tree/nvim-tree.lua",
     opts = function()
       return require "configs.nvimtree"
     end,
   },
-
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   event = "VimEnter",
-  --   opts = function()
-  --     return require "configs.lualine"
-  --   end,
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- },
 
   {
     "lewis6991/gitsigns.nvim",
@@ -99,8 +86,30 @@ return {
     end,
   },
 
+  -- Claude Code AI 助手
+  -- {
+  --   "coder/claudecode.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = { "folke/snacks.nvim" },
+  --   opts = function()
+  --     return require "configs.claudecode"
+  --   end,
+  --   keys = {
+  --     { "<leader>cc", desc = "AI/Claude Code" },
+  --     { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
+  --     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
+  --     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
+  --     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+  --     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select model" },
+  --     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
+  --     { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v", desc = "Send to Claude" },
+  --     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>",  desc = "Accept diff" },
+  --     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",    desc = "Deny diff" },
+  --   },
+  -- },
+
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function()
       return require "configs.mason"
     end,
@@ -181,8 +190,10 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = function()
-      return require "configs.noice"
+    config = function()
+      local noice_config = require "configs.noice"
+      require("noice").setup(noice_config.config)
+      noice_config.setup_highlights()
     end,
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -206,15 +217,6 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
-
-  -- {
-  --   "VonHeikemen/fine-cmdline.nvim",
-  --   -- event = "VimEnter",
-  --   keys = { "'", "\"" },
-  --   dependencies = {
-  --     { "MunifTanjim/nui.nvim" },
-  --   },
-  -- },
 
   -- {
   --     "ray-x/go.nvim",

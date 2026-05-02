@@ -22,18 +22,19 @@ local M = {
     },
 
     statusline = {
+      -- enabled = false, -- 禁用 NvChad 状态栏，使用 lualine
       theme = "minimal",
       separator_style = "round",
     },
   },
 
   term = {
-    sizes = { sp = 0.3, vsp = 0.3, ["bo sp"] = 0.3, ["bo vsp"] = 0.3 },
+    sizes = { sp = 0.4, vsp = 0.35, ["bo sp"] = 0.4, ["bo vsp"] = 0.35 },
     float = {
-      row = 0.15,
+      row = 0.1,
       col = 0.15,
       width = 0.7,
-      height = 0.6,
+      height = 0.8,
     },
   },
 

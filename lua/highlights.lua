@@ -291,6 +291,20 @@ M.add = {
 
   ------ For NvimTree ------
   -- NvimTreeOpenedFolderName = { fg = "green", bold = true },
+
+  ------ For Noice ------
+  -- Cmdline 边框颜色（普通命令）
+  NoiceCmdlinePopupBorder = { fg = cbule__ },       -- 蓝色边框
+  NoiceCmdlinePopupBorderSearch = { fg = cyellow }, -- 搜索时黄色边框
+
+  -- Cmdline 图标颜色
+  NoiceCmdlineIcon = { fg = cbule__ },
+  NoiceCmdlineIconSearch = { fg = cyellow },
+
+  -- 其他可选的 Noice 高亮
+  -- NoiceCmdlinePopup = { bg = cgrey15 }, -- 背景色
+  -- NoiceConfirmBorder = { fg = corange }, -- 确认框边框
+  -- NoicePopupmenuBorder = { fg = cpurple }, -- 弹出菜单边框
 }
 
 return M

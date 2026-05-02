@@ -15,7 +15,7 @@ local function my_on_attach(bufnr)
   vim.keymap.set("n", "<C-s>", api.node.open.horizontal, opts "Open: Horizontal Split")
   -- vim.keymap.set("n", "d", api.fs.trash, opts "Trash")
   -- vim.keymap.set("n", "D", api.fs.remove, opts "Delete")
-  -- vim.keymap.set("n", "K", api.node.show_info_popup, opts "Info")
+  vim.keymap.set("n", "K", api.node.show_info_popup, opts "Info")
 end
 
 local config = {
@@ -53,7 +53,7 @@ local config = {
       "^\\.ropeproject",
       "^\\.cache",
       "^\\.swp",
-      "^\\.a",
+      "^\\.a$",
       "^\\.rbc$",
       "^\\.db$",
       "*.pyc",
@@ -74,7 +74,7 @@ local config = {
         git = true,
       },
     },
-  }
+  },
 }
 
 return vim.tbl_deep_extend("force", default_config, config)

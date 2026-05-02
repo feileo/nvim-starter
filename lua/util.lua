@@ -57,14 +57,15 @@ local exit_confirm = function()
     { noremap = true, silent = true }
   )
 
-  local function close_win()
-    vim.api.nvim_win_close(win, true)
-  end
-
   vim.api.nvim_create_autocmd("WinClosed", {
     group = vim.api.nvim_create_augroup("CloseConfirmWin", { clear = true }),
-    pattern = "*",
-    callback = close_win,
+    pattern = tostring(win),
+    once = true,
+    callback = function()
+      if vim.api.nvim_win_is_valid(win) then
+        vim.api.nvim_win_close(win, true)
+      end
+    end,
   })
 end
 
@@ -129,12 +130,22 @@ end
 local lspsaga_peek_win_id = nil
 
 M.toggle_peek_definition = function()
-  if lspsaga_peek_win_id then
+  if lspsaga_peek_win_id and vim.api.nvim_win_is_valid(lspsaga_peek_win_id) then
+    vim.api.nvim_win_close(lspsaga_peek_win_id, true)
     lspsaga_peek_win_id = nil
-    vim.cmd "q"
   else
-    lspsaga_peek_win_id = "defined"
+    lspsaga_peek_win_id = nil
     vim.cmd "Lspsaga peek_definition"
+    -- 记录 lspsaga 打开的浮窗 ID（在下一个事件循环中获取）
+    vim.schedule(function()
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        if config.relative ~= "" then
+          lspsaga_peek_win_id = win
+          break
+        end
+      end
+    end)
   end
 end
 

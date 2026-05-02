@@ -33,12 +33,16 @@ local opts = {
     },
   },
   outline = {
+    layout = 'float',
     auto_preview = false,
+    win_width = 40,
     detail = false,
     keys = {
       jump = "<CR>",
       quit = { "q", "<ESC>", "<C-c>" },
     },
+    max_height = 0.7,
+    left_width = 0.2,
   },
   rename = {
     auto_save = false,

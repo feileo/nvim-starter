@@ -1,14 +1,13 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
-    -- python = { "ruff_format", "isort", "black" },
+    css = { "prettier" },
+    html = { "prettier" },
     python = function(bufnr)
-      if require("conform").get_formatter_info("ruff_format", bufnr).available then
-        return { "ruff_format" }
+      if require("conform").get_formatter_info("ruff", bufnr).available then
+        return { "ruff" }
       else
-        return { "isort", "black" }
+        return { "isort", "black", "autopep8" }
       end
     end,
     go = { "goimports", "gofmt" },
