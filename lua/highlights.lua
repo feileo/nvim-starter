@@ -101,7 +101,9 @@ M.override = {
   Comment = { italic = false },
   SpecialComment = { italic = true },
   ------------------------- plugins -------------------------
-  -- TelescopeMatching = { fg = "red" },
+  -- Telescope
+  TelescopeMatching = { fg = cbule__, bg = "None", bold = true },
+  TelescopeSelection = { fg = "white", bg = cgrey16, bold = true },
 }
 
 ---@type HLTable

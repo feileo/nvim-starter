@@ -86,6 +86,7 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help 
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 map("n", "<leader>fc", "<cmd>Telescope commands<CR>", { desc = "telescope find commands" })
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+map("n", "<leader>fw", "<cmd>Telescope grep_string<CR>", { desc = "telescope find words" })
 
 map("n", "<leader>ss", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>sw", ":<C-U><C-R>=printf('Telescope live_grep default_text=%s', expand('<cword>'))<CR><CR>", { desc = "telescope live grep cursor word" })

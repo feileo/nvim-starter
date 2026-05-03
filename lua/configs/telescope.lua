@@ -22,7 +22,7 @@ local file_picker_options = {
     horizontal = {
       prompt_position = "top", --'bottom'
       -- mirror = true,
-      width = 0.40,
+      width = 0.50,
       height = 0.70,
       preview_cutoff = 10000, -- When columns are less than this value, the preview will be disabled
     },

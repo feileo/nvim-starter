@@ -32,7 +32,9 @@ local config = {
     enable = true,
     use_languagetree = true,
     -- 启用 Go 的 Tree-sitter 高亮以支持现代化方案
-    disable = { "go" },
+    disable = {
+      "go"
+    },
 
     -- 启用 vim 语法作为 Tree-sitter 的补充
     -- 只对 Go 启用，因为 syntax/go.vim 提供了格式化占位符等额外高亮

@@ -8,10 +8,10 @@ create_autocmd("BufReadPost", {
   callback = function()
     local line = vim.fn.line "'\""
     if
-        line > 1
-        and line <= vim.fn.line "$"
-        and vim.bo.filetype ~= "commit"
-        and vim.fn.index({ "xxd", "gitrebase" }, vim.bo.filetype) == -1
+      line > 1
+      and line <= vim.fn.line "$"
+      and vim.bo.filetype ~= "commit"
+      and vim.fn.index({ "xxd", "gitrebase" }, vim.bo.filetype) == -1
     then
       vim.cmd 'normal! g`"'
     end
@@ -83,3 +83,18 @@ create_autocmd("FileType", {
     vim.opt.spelllang = "en_us,zh_cn"
   end,
 })
+
+-- create_autocmd("FileType", {
+--   pattern = "*",
+--   callback = function()
+--     pcall(vim.treesitter.start)
+--   end,
+-- })
+
+local create_cmd = vim.api.nvim_create_user_command
+
+create_cmd("TSInstallAll", function()
+  local spec = require("lazy.core.config").plugins["nvim-treesitter"]
+  local opts = type(spec.opts) == "table" and spec.opts or {}
+  require("nvim-treesitter").install(opts.ensure_installed)
+end, {})
