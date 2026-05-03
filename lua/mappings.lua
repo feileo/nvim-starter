@@ -49,7 +49,7 @@ map({ "v" }, "<C-l>", ">gv", { desc = "move lines right" })
 
 map({ "n" }, ";", ":", { desc = "command enter command mode" })
 map({ "n" }, "<C-q>", "<cmd>q<CR>", { desc = "command quit vim" })
-map({ "n" }, "<C-c>", "<cmd>wincmd c<CR>", { desc = "command quit vim" })
+map({ "n" }, "<C-c>", "<cmd>CloseWindow<CR>", { desc = "command close window" })
 map({ "n" }, "<A-q>", "<cmd>ExitSafe<CR>", { desc = "command quit vim" })
 
 -- map({ 'n' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -111,5 +111,6 @@ map("n", "<A-i>", "<cmd>Interestingwords --toggle<CR>", { desc = "interestingwor
 map("n", "<A-I>", "<cmd>Interestingwords --remove_all<CR>", { desc = "interestingwords remove all" })
 
 -- translator
-map("n", "<leader>t", "<Plug>TranslateW", { desc = "translate" })
-map("v", "<leader>t", "<Plug>TranslateWV", { desc = "translate" })
+map("n", "<leader>t", function() return require("pantran").motion_translate() end, { expr = true, noremap = true, desc = "translate motion" })
+map("n", "<leader>tt", function() return require("pantran").motion_translate() .. "_" end, { expr = true, noremap = true, desc = "translate line" })
+map("x", "<leader>t", function() return require("pantran").motion_translate() end, { expr = true, noremap = true, desc = "translate selection" })

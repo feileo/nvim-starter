@@ -2,7 +2,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
-  lua_ls = {},
   html = {},
   cssls = {},
   bashls = {},

@@ -182,9 +182,11 @@ return {
   },
 
   {
-    "voldikss/vim-translator",
-    event = "VimEnter",
-    cmd = { "TranslateW", "TranslateWV" },
+    "potamides/pantran.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return require "configs.pantran"
+    end,
   },
 
   {
