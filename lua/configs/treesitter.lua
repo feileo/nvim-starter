@@ -33,7 +33,7 @@ local config = {
     use_languagetree = true,
     -- 启用 Go 的 Tree-sitter 高亮以支持现代化方案
     disable = {
-      "go"
+      "go",
     },
 
     -- 启用 vim 语法作为 Tree-sitter 的补充
@@ -48,7 +48,7 @@ local config = {
   playground = {
     enable = true,
     -- 可以在这里配置一些 playground 选项
-  }
+  },
 }
 
 return vim.tbl_deep_extend("force", default_config, config)

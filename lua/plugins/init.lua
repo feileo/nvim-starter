@@ -117,7 +117,6 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    -- event = "VimEnter",
     opts = function()
       return require "configs.treesitter"
     end,
